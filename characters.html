@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <span id="logo">
+            <a href="/index.html">
+                <img src="/Sorting_Hat-removebg-preview.png" alt="Logo">
+            </a>
+        </span>
+        <ul>
+            <li><a href="/spells.html">Spells</a></li>
+            <li><a class="active" href="/characters.html">Characters</a></li>
+            <li><a href="/search.html">Search spells/characters</a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
+        <div id="charactertitle">
+            <h2>Characters</h2>
+        </div>
+    </div>
+
+    <script>
+        async function characters() {
+            const request = await fetch('https://hp-api.onrender.com/api/characters');
+            const result = await request.json()
+            console.log(result);
+
+            result.forEach((character) => {
+                console.log(character)
+                // Create a new div element
+                const divElement = document.createElement('div');
+                const imgElement = document.createElement('img');
+                const infoElement = document.createElement('div');
+                const nameElement = document.createElement('h1');
+                const pElement = document.createElement('p');
+
+                // Set some content or styles for the div element (optional)
+                imgElement.src = character.image;
+
+                infoElement.append(
+                    createElement('h1', `${character.name}`),
+                    createElement('p', `House: ${character.house}`),
+                    createElement('p', `Patronus: ${character.patronus}`),
+                    createElement('p', `Alternate names: ${character.alternate_names}`),
+                    createElement('p', `Ancestry: ${character.ancestry}`),
+                    createElement('p', `Wand: ${character.wand.core}, ${character.wand.length}", ${character.wand.wood}`),
+                )
+                infoElement.classList.add("info")
+                divElement.classList.add("item")
+                divElement.append(imgElement, infoElement);
+
+                // Append the div element to the body
+                document.querySelector("#container").appendChild(divElement);
+            })
+        }
+        characters()
+
+        function createElement(el, textContent, classes = [])
+        {
+            const element = document.createElement(el)
+            element.textContent = textContent;
+            element.classList.add(...classes)
+            return element;
+        }
+    </script>
+</body>
+
+</html>

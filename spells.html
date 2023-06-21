@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spells</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+
+
+    <nav>
+        <span id="logo">
+            <a href="/index.html">
+                <img src="/Sorting_Hat-removebg-preview.png" alt="Logo">
+            </a>
+        </span>
+        <ul>
+            <li><a class="active" href="/spells.html">Spells</a></li>
+            <li><a href="/characters.html">Characters</a></li>
+            <li><a href="/search.html">Search spells/characters</a></li>
+        </ul>
+    </nav>
+
+    <div id="container">
+        <div id="spellstitle">
+            <h2>Spells</h2>
+        </div>
+    </div>
+
+    <script>
+        async function spells() {
+            const request = await fetch('https://hp-api.onrender.com/api/spells');
+            const result = await request.json()
+            console.log(result);
+
+            result.forEach((spell) => {
+                console.log(spell)
+                // Create a new div element
+                const divElement = document.createElement('div');
+
+                // Set some content or styles for the div element (optional)
+                divElement.textContent = `${spell.name}: ${spell.description}`
+                divElement.classList.add("item")
+
+                // Append the div element to the body
+                document.querySelector("#container").appendChild(divElement);
+            })
+        }
+        spells()
+    </script>
+</body>
+
+</html>
