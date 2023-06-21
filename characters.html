@@ -24,10 +24,11 @@
         </ul>
     </nav>
 
+    <div id="charactertitle">
+        <h2>Characters</h2>
+    </div>
     <div id="container">
-        <div id="charactertitle">
-            <h2>Characters</h2>
-        </div>
+        
     </div>
 
     <script>
@@ -61,7 +62,7 @@
                 divElement.append(imgElement, infoElement);
 
                 // Append the div element to the body
-                document.querySelector("#container").appendChild(divElement);
+                document.querySelector("#container").append(divElement);
             })
         }
         characters()

@@ -64,35 +64,29 @@ li a:hover {
     color: white;
     position: fixed;
     top: 20vh;
-    left: 80vh;
+    left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
-#subtext {
-    position: fixed;
-    top: 30vh;
-    left: 50vh;
-    right: 80;
-    bottom: 0;
-}
 
 #spellstitle {
     color: white;
     position: fixed;
-    top: 15vh;
+    top: 14vh;
     left: 7vh;
     right: 0;
-    bottom: 0;
 }
 
 #charactertitle {
     color: white;
     position: fixed;
-    top: 15vh;
+    top: 14vh;
     left: 7vh;
     right: 0;
-    bottom: 0;
 }
 
 #search {
@@ -105,7 +99,7 @@ li a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .item {
